@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre Panier - AstroStore</title>
+    <link rel="stylesheet" href="../css/panier.css">
+</head>
+<body>
+    <div class="Conteneur">
+        <div class="colonne1"></div>
+        <div class="colonne2">
+            <header>
+                <div class="header">
+                    <div class="container">
+                        <nav class="navbar">
+                            <ul>
+                                <li><a href="../index.php">Accueil</a></li>
+                                <li><a href="products.html">Produits</a></li>
+                                <li><a href="offres.html">Offres</a></li>
+                                <li><a href="agences.html">Nos agences</a></li>
+                                <li><a href="contacts.html">Contacts</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <h1>Votre Panier</h1>
+                <table id="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Nom du Produit</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    </tbody>
+                </table>
+                <div id="cart-summary">
+                    <p>Total Panier : <span id="total-price">0 TND</span></p>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="container">
+                    <p>© 2024 Votre Société. Tous droits réservés.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartTableBody = document.querySelector('#cart-table tbody');
+            let totalPrice = 0;
+
+            
+            cartTableBody.innerHTML = '';
+
+            cart.forEach(item => {
+                let row = document.createElement('tr');
+                
+                let nameCell = document.createElement('td');
+                nameCell.textContent = item.name;
+                row.appendChild(nameCell);
+
+                let priceCell = document.createElement('td');
+                priceCell.textContent = `${item.price} TND`;
+                row.appendChild(priceCell);
+
+                let quantityCell = document.createElement('td');
+                quantityCell.textContent = item.quantity;
+                row.appendChild(quantityCell);
+
+                let totalCell = document.createElement('td');
+                let itemTotal = item.price * item.quantity;
+                totalCell.textContent = `${itemTotal.toFixed(2)} TND`;
+                row.appendChild(totalCell);
+
+                let actionCell = document.createElement('td');
+                
+                
+                
+                let removeButton = document.createElement('button');
+                removeButton.textContent = 'Retirer';
+                removeButton.onclick = () => removeFromCart(item.name);
+                actionCell.appendChild(removeButton);
+
+                
+                let modifyButton = document.createElement('button');
+                modifyButton.textContent = 'Modifier Quantité';
+                modifyButton.onclick = () => {
+                    let newQuantity = prompt('Entrez la nouvelle quantité:', item.quantity);
+                    if (newQuantity !== null) {
+                        newQuantity = parseInt(newQuantity, 10);
+                        if (!isNaN(newQuantity) && newQuantity > 0) {
+                            modifyQuantity(item.name, newQuantity);
+                        } else {
+                            alert('Quantité invalide.');
+                        }
+                    }
+                };
+                actionCell.appendChild(modifyButton);
+                
+                row.appendChild(actionCell);
+
+                cartTableBody.appendChild(row);
+
+                totalPrice += itemTotal;
+            });
+
+            document.querySelector('#total-price').textContent = `${totalPrice.toFixed(2)} TND`;
+        }
+
+       
+        function removeFromCart(name) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.name !== name);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+   
+        function modifyQuantity(name, newQuantity) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.map(item => {
+                if (item.name === name) {
+                    return { ...item, quantity: newQuantity };
+                }
+                return item;
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        // Charger les articles du panier lors du chargement de la page
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
+</body>
+</html>

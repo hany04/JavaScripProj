@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP Web - HTML - CSS (Header)</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link rel="stylesheet" type="text/css" href="../css/products.css">
+    <link rel="icon" type="image/png" href="..\images\products\logoastro.png">
+</head>
+
+<body>
+
+    <!-- <?php
+    $servername = 'localhost';
+    $username = 'tp_web';
+    $password = 'tp_web';
+
+    //On établit la connexion
+    $conn = mysqli_connect($servername, $username, $password);
+
+    //On vérifie la connexion
+    if (!$conn) {
+        die('Erreur : ' . mysqli_connect_error());
+    }
+    ?> -->
+
+    <div class="Conteneur">
+        <div class="colonne1"></div>
+        <div class="colonne2">
+            <div class="divHeader" style="width: 100%;">
+                <div class="container">
+                    <div class="">
+                        <div class="social_icon">
+                            <a href="https://facebook.com" target="_blank"><img class="imgHeader" src="../images/icons/facebook_icon.svg" alt="Facebook"></a>
+                            <a href="https://twitter.com" target="_blank"><img class="imgHeader" src="../images/icons/twitter_icon.svg" alt="Twitter"></a>
+                            <a href="https://instagram.com" target="_blank"><img class="imgHeader" src="../images/icons/instagram_icon.svg" alt="Instagram"></a>
+                            <a href="https://linkedin.com" target="_blank"><img class="imgHeader" src="../images/icons/linkedin_icon.svg" alt="LinkedIn"></a>
+                        </div>
+
+                        <div class="header_right">
+                            <div class="login_register_btn">
+                                <a href="Panier.html" class="btn">Panier</a>
+                        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header">
+                        <div class="container">
+                            <div class="logo">
+                                <a href="#"><img class="imgLogo" src="..\images\products\logoastro.png" alt="Logo"></a>
+                            </div>
+                            <div class="navbar">
+                                <ul>
+                                    <li class="active"><a href="../index.php">Accueil</a></li>
+                                    <li><a href="products.html">Produits</a></li>
+                                    <li><a href="offres.html">Offres</a></li>
+                                    <li><a href="agences.html">Nos agences</a></li>
+                                    <li><a href="contacts.html">Contacts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text">
+                <center>
+                    <h6>Nos Produits</h6>
+                </center>
+            </div>
+
+            <div class="paragraphe">
+                <h2><em>Sublimez votre élégance avec notre collection intemporelle, et apportez de l'originalité avec nos bijoux au design typiquement kabyle de fabrication artisanale</em></h2>
+            </div>
+
+            <div class="titre">
+                <center>
+                    <h4>Accessoire PC</h4>
+                </center>
+            </div>
+            <section class="produits">
+                <section class="partie1">
+                    <div class="column col1">
+                        <div class="card">
+                            <div class="photos">
+                                <img src="../images/products/packaccessoire.jpg" alt="Produit 1">
+                            </div>
+                            <p class="produit">
+                                <h3>Pack Accessoire PC</h3>
+                                120 TND
+                            </p>
+                            <div class="add">
+                                <button onclick="addToCart('Pack Accessoire PC', 120)">Ajouter au panier</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column col2">
+                        <div class="card">
+                            <div class="photos">
+                                <img src="../images/products/kitt.jpg" alt="Produit 2">
+                            </div>
+                            <p class="details">
+                                <h3>kitt</h3>
+                                78 TND
+                            </p>
+                            <div class="add">
+                                <button onclick="addToCart('kitt', 78)">Ajouter au panier</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column col3">
+                        <div class="card">
+                            <div class="photos">
+                                <img src="../images/products/manette.jpg" alt="Produit 3">
+                            </div>
+                            <p class="details">
+                                <h3>Manette Gaming</h3>
+                                48 TND
+                            </p>
+                            <div class="add">
+                                <button onclick="addToCart('Manette Gaming', 48)">Ajouter au panier</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p>© 2024 Votre Société. Tous droits réservés.</p>
+        </div>
+    </div>
+    <script src="../js/cart.js"></script>
+
+</body>
+
+</html>
